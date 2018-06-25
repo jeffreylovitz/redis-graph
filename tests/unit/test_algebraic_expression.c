@@ -20,7 +20,7 @@ void _print_matrix(GrB_Matrix mat) {
     GrB_Matrix_ncols(&ncols, mat);
     GrB_Matrix_nrows(&nrows, mat);
     GrB_Matrix_nvals(&nvals, mat);
-    printf("ncols: %llu, nrows: %llu, nvals: %llu\n", ncols, nrows, nvals);
+    printf("ncols: %lu, nrows: %lu, nvals: %lu\n", ncols, nrows, nvals);
 
     GrB_Index I[nvals];     // array for returning row indices of tuples
     GrB_Index J[nvals];     // array for returning col indices of tuples
@@ -28,7 +28,7 @@ void _print_matrix(GrB_Matrix mat) {
 
     GrB_Matrix_extractTuples(I, J, X, &nvals, mat);
     for(int i = 0; i < nvals; i++) {
-        printf("[%llu,%llu,%d]\n", I[i], J[i], X[i]);
+        printf("[%lu,%lu,%d]\n", I[i], J[i], X[i]);
     }
 }
 
@@ -44,9 +44,9 @@ bool _compare_matrices(GrB_Matrix a, GrB_Matrix b) {
     GrB_Matrix_nvals(&bvals, b);
 
     if (acols != bcols || arows != brows || avals != bvals) {
-        printf("acols: %llu bcols: %llu", acols, bcols);
-        printf("arows: %llu brows: %llu", arows, brows);
-        printf("avals: %llu bvals: %llu", avals, bvals);
+        printf("acols: %lu bcols: %lu", acols, bcols);
+        printf("arows: %lu brows: %lu", arows, brows);
+        printf("avals: %lu bvals: %lu", avals, bvals);
         return false;
     }
 
